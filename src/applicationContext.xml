@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <!-- 1配置数据源 -->
+       <property name="driverClassName"  value="com.mysql.jdbc.Driver"/>
+       <!--<property name="url" value="jdbc:mysql://localhost/spring"/>-->
+<property name="url" value="jdbc:mysql://127.0.0.1:3306/spring?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false"/>
+<property name="username" value="root"/>
+<property name="password" value="mjd971001"/>
+
+<!--设置名为bean的id-->
+        </bean>
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+<property name="dataSource" ref="dataSource"/>
+</bean>
+
+
+    <!--设置名为accountDao-->
+    <bean id="accountDao" class="AccountDaolmpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="accountDao1" class="AccountDaolmpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+
+
+
+
+        </beans>
